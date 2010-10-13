@@ -55,10 +55,8 @@ ATTR: equ 0x5800
   ld (hl),fruit_attr
   add hl,bc 
   push hl
-  ld (hl),a
   add hl,bc 
   push hl
-  ld (hl),a
   ld ix, 2
   add ix, sp
 
