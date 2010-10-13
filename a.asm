@@ -1,6 +1,7 @@
 ; vim:syntax=z8a:
 
 crazy_key_handling: equ 1
+different_fruits: equ 1
 
 black:  equ 0
 blue:   equ 1
@@ -133,8 +134,13 @@ de_has_direction:
   ; checking next position
   ld a, (hl)
   ld (hl), snake_attr
+if different_fruits
+  bit 7, a
+  jr nz, place_fruit
+else
   cp fruit_attr
   jr z, place_fruit
+endif
   cp free_attr
   jr z, clear_tail
   ld (hl), bloody_attr
@@ -187,8 +193,14 @@ try_again:
   ld a,(hl)
   cp free_attr
   jr nz, try_again
+if different_fruits
+  or l
+  or flash
+  ld (hl), a
+else
   ld (hl), fruit_attr
-  
+endif
+
 increment_score:
   ld hl, last_digit
   ld a, '0'+10
