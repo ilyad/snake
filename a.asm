@@ -29,7 +29,7 @@ bloody_attr: equ bright+flash+red+yellow*8
 org 30000
 ATTR: equ 0x5800
 
-  ld d, 35 ; initial speed
+  ld d, 32 ; initial speed
   exx
   
   ld a, wall_attr
