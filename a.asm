@@ -75,19 +75,19 @@ read_ports:
   ; shift B to next row '67890'
   rl b
   ; read '67890' and append value of '5'
-  in b, (c)
-  and b
+  in c, (c)
+  and c
   ; set bits 11____11
   or %11000011
 
   ld hl, kbd_state
   ; save keyboard state to B
-  ld b,a
+  ld c,a
   ; new key: now is 0 && last time was 1
   cpl a
   and (hl)
   ; save new state back to (kbd_state)
-  ld (hl), b
+  ld (hl), c
   jr nz, new_key_pressed
   dec de
   ld a,d
