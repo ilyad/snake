@@ -182,12 +182,35 @@ try_again:
   cp free_attr
   jr nz, try_again
   ld (hl), fruit_attr
+  
+increment_score:
+  ld hl, last_digit
+  ld a, '0'+10
+next_digit:
+  inc (hl)
+  cp (hl)
+  jr nz, increment_done
+  ld (hl), '0'
+  dec hl
+  jp next_digit
+increment_done:
+
+print_string:
+  ld hl, string_start
+  ld b, 6
+print_char:
+  ld a,(hl)
+  rst 0x10
+  inc hl
+  djnz print_char
+
   exx
   jr draw_head 
 
-  
 kbd_state: db 0
 direction: dw 32
+string_start: db 22,1,29,'0','0'
+last_digit: db '0'
 
 
 end 
