@@ -76,7 +76,7 @@ read_ports:
   ld bc, 0x100 * %11110111 + 254
   ; read '5' key and shift it from bit 4 to bit 5
   in a, (c)
-  rl a
+  add a
   ; shift B to next row '67890'
   rl b
   ; read '67890' and append value of '5'
