@@ -67,12 +67,7 @@ ATTR: equ 0x5800
 
 change_speed:
   exx
-  ld a,b
-  add d
-  ld b,a
-  jr nc, not_dec_de
   dec de
-not_dec_de:
   push de
   exx
   pop de
