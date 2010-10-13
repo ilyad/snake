@@ -22,7 +22,6 @@ cyan_magenta: equ bright+flash+cyan+magenta*8
 fruit_attr: equ cyan_magenta
  free_attr: equ black_on_white
 snake_attr: equ green_on_green
- wall_attr: equ black_on_black
 bloody_attr: equ bright+flash+red+yellow*8
 
 
@@ -32,7 +31,7 @@ ATTR: equ 0x5800
   ld d, 32 ; initial speed
   exx
   
-  ld a, wall_attr
+  xor a ; a=0: black on black wall attribute
   ld hl, ATTR
   ld de, ATTR+1
   ld bc, 32
