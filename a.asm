@@ -179,7 +179,7 @@ place_fruit:
   exx
 try_again:
   ld a,r
-  xor c
+  add c
   ld c,a
   ld h, 0x58/2
   ld l,a
