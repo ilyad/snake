@@ -23,7 +23,7 @@ cyan_magenta: equ bright+flash+cyan+magenta*8
 fruit_attr: equ cyan_magenta
  free_attr: equ black_on_white
 snake_attr: equ green_on_green
-bloody_attr: equ bright+flash+red+yellow*8
+bloody_attr: equ bright+red*8
 
 
 org 30000
