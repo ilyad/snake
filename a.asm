@@ -67,6 +67,7 @@ ATTR: equ 0x5800
 
 change_speed:
   exx
+change_speed_exx:
   dec de
   push de
   exx
@@ -137,6 +138,7 @@ de_has_direction:
   push hl ; making the snake longer!
   ; checking next position
   ld a, (hl)
+  ld (hl), snake_attr
   cp fruit_attr
   jr z, place_fruit
   cp free_attr
@@ -164,10 +166,19 @@ shift_snake:
   dec hl
   LDDR
   pop hl ; making the snake shorter again!
-draw_head:
-  ld (hl), snake_attr
 
   JR change_speed
+
+print_string:
+  ld hl, string_start
+  ld b, 6
+print_char:
+  ld a,(hl)
+  rst 0x10
+  inc hl
+  djnz print_char
+
+  jr change_speed_exx
 
 place_fruit:
   exx
@@ -189,23 +200,11 @@ increment_score:
 next_digit:
   inc (hl)
   cp (hl)
-  jr nz, increment_done
+  jr nz, print_string
   ld (hl), '0'
   dec hl
   jp next_digit
-increment_done:
 
-print_string:
-  ld hl, string_start
-  ld b, 6
-print_char:
-  ld a,(hl)
-  rst 0x10
-  inc hl
-  djnz print_char
-
-  exx
-  jr draw_head 
 
 kbd_state: db 0
 direction: dw 32
