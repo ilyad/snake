@@ -192,7 +192,7 @@ try_again:
   cp free_attr
   jr nz, try_again
 if different_fruits
-  or l
+  xor l
   or flash
   ld (hl), a
 else
