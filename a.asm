@@ -28,8 +28,6 @@ bloody_attr: equ bright+flash+red+yellow*8
 org 30000
 ATTR: equ 0x5800
 
-  ld d, 32 ; initial speed
-  exx
   
   xor a ; a=0: black on black wall attribute
   ld hl, ATTR
@@ -64,8 +62,8 @@ ATTR: equ 0x5800
   ld ix, 2
   add ix, sp
 
-change_speed:
-  exx
+  ld d, 32 ; initial speed
+
 change_speed_exx:
   dec de
   push de
@@ -166,7 +164,8 @@ shift_snake:
   LDDR
   pop hl ; making the snake shorter again!
 
-  JR change_speed
+  exx
+  JR change_speed_exx
 
 print_string:
   ld hl, string_start
