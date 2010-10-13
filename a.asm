@@ -148,8 +148,7 @@ de_has_direction:
   jr z, clear_tail
   ld (hl), bloody_attr
   di
-  halt
-  rst 0 ; game over
+  halt ; game over
 clear_tail:
   ld l, (ix+0)
   ld h, (ix+1)
