@@ -50,7 +50,6 @@ ATTR: equ 0x5800
   LDIR
 
   ld hl, ATTR+32*5+15
-  ld a, snake_attr
   ld c, 32
   ld (hl),fruit_attr
   add hl,bc 
