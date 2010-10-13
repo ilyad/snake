@@ -62,7 +62,7 @@ ATTR: equ 0x5800
   ld ix, 2
   add ix, sp
 
-  ld d, 32 ; initial speed
+  ld d,c ; initial speed, c=32
 
 change_speed_exx:
   dec de
