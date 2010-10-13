@@ -101,16 +101,15 @@ new_key_pressed:
   ; A contains non zero "new key" mask
   ld de, -32 ; (D,E)=(ff,-32)
   and %11110111 ; UP is the last bit
-  jr z, randomize
+  jr z, de_has_direction
   ld e,d ; (D,E)=(ff,ff)=-1
   and %11011111 ; LEFT is the last bit
-  jr z, randomize
+  jr z, de_has_direction
   inc de ; DE=0
   inc de ; DE=1
   and %11111011 ; RIGHT is the last bit
-  jr z, randomize
+  jr z, de_has_direction
   ld e, 32 ; ok, it's DOWN
-randomize:
 de_has_direction:
   ld (direction), de
   pop hl
