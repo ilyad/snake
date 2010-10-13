@@ -1,5 +1,7 @@
 ; vim:syntax=z8a:
 
+crazy_key_handling: equ 1
+
 black:  equ 0
 blue:   equ 1
 red:    equ 2
@@ -107,8 +109,16 @@ new_key_pressed:
   jr z, de_has_direction
   inc de ; DE=0
   inc de ; DE=1
+if crazy_key_handling
+  ; B still contains the 67890-port number
+  ; which is 1110111
+  ; and this is exactly DOWN mask
+  and b
+  jr nz, de_has_direction
+else
   and %11111011 ; RIGHT is the last bit
   jr z, de_has_direction
+endif
   ld e, 32 ; ok, it's DOWN
 de_has_direction:
   ld (direction), de
