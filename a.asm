@@ -25,10 +25,8 @@ fruit_attr: equ cyan_magenta
 snake_attr: equ green_on_green
 bloody_attr: equ bright+red*8
 
-
 org 30000
 ATTR: equ 0x5800
-
   
   xor a ; a=0: black on black wall attribute
   ld hl, ATTR
@@ -212,12 +210,9 @@ next_digit:
   dec hl
   jp next_digit
 
-
 kbd_state: db 0
 direction: dw 32
 string_start: db 22,1,29,'0','0'
 last_digit: db '0'
-
-
 
 end 
