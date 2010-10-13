@@ -51,7 +51,12 @@ ATTR: equ 0x5800
 
   ld hl, ATTR+32*5+15
   ld c, 32
-  ld (hl),fruit_attr
+  ld a,fruit_attr
+  ld (hl),a
+  add hl,bc 
+  ld (hl),a
+  add hl,bc 
+  ld (hl),a
   add hl,bc 
   push hl
   add hl,bc 
