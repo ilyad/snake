@@ -27,7 +27,7 @@ bloody_attr: equ bright+red*8
 
 org 30000
 ATTR: equ 0x5800
-  
+
   xor a ; a=0: black on black wall attribute
   ld hl, ATTR
   ld de, ATTR+1
@@ -52,13 +52,13 @@ ATTR: equ 0x5800
   ld c, 32
   ld a,fruit_attr
   ld (hl),a
-  add hl,bc 
+  add hl,bc
   ld (hl),a
-  add hl,bc 
+  add hl,bc
   ld (hl),a
-  add hl,bc 
+  add hl,bc
   push hl
-  add hl,bc 
+  add hl,bc
   push hl
   ld ix, 2
   add ix, sp
@@ -215,4 +215,4 @@ direction: dw 32
 string_start: db 22,1,29,'0','0'
 last_digit: db '0'
 
-end 
+end
