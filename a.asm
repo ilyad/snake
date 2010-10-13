@@ -1,7 +1,5 @@
 ; vim:syntax=z8a:
 
-use_randomizator: equ 0
-
 black:  equ 0
 blue:   equ 1
 red:    equ 2
@@ -100,9 +98,6 @@ no_key_pressed:
   ld de, (direction)
   jr de_has_direction
 new_key_pressed:
-if use_randomizator
-  push de ; the value will be used in 'randomize'
-endif
   ; A contains non zero "new key" mask
   ld de, -32 ; (D,E)=(ff,-32)
   and %11110111 ; UP is the last bit
@@ -116,15 +111,6 @@ endif
   jr z, randomize
   ld e, 32 ; ok, it's DOWN
 randomize:
-if use_randomizator
-  exx
-  pop hl ; the time counter 'de' value saved above
-  ld a,r
-  xor c
-  add l ; only using low half of old 'de' counter
-  ld c,a
-  exx
-endif
 de_has_direction:
   ld (direction), de
   pop hl
