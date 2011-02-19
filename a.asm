@@ -208,7 +208,7 @@ next_digit:
   jr nz, print_string
   ld (hl), '0'
   dec hl
-  jp next_digit
+  jr next_digit
 
 kbd_state: db 0
 direction: dw 32
