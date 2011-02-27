@@ -36,7 +36,7 @@ ATTR: equ 0x5800
   ld (hl), a
   LDIR
 
-  ld de, ATTR+31+32
+  ld e, 31+32 ; de=ATTR+31+32: last char in the second line
   ld (de), a
 
   inc de
