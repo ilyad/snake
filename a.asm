@@ -29,8 +29,9 @@ org 30000
 ATTR: equ 0x5800
 
   xor a ; a=0: black on black wall attribute
-  ld hl, ATTR
   ld de, ATTR+1
+  ld h, d ; h=0x58
+  ld l, a ; l=0x00, hl=ATTR
   ld bc, 32
   ld (hl), a
   LDIR
