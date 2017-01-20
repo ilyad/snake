@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 template="randomize-usr-30000.sna" &&
 z80asm a.asm &&
