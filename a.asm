@@ -119,7 +119,8 @@ if crazy_key_handling
   ; and this is exactly DOWN mask
   and b
   jr nz, de_has_direction
-else
+endif
+if 0==crazy_key_handling
   and %11111011 ; RIGHT is the last bit
   jr z, de_has_direction
 endif
@@ -136,7 +137,8 @@ de_has_direction:
 if different_fruits
   bit 7, a
   jr nz, place_fruit
-else
+endif
+if 0==different_fruits
   cp fruit_attr
   jr z, place_fruit
 endif
@@ -196,7 +198,8 @@ if different_fruits
   xor l
   or flash
   ld (hl), a
-else
+endif
+if 0==different_fruits
   ld (hl), fruit_attr
 endif
 
