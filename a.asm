@@ -90,7 +90,7 @@ read_ports:
   ; save keyboard state to B
   ld c,a
   ; new key: now is 0 && last time was 1
-  cpl a
+  cpl
   and (hl)
   ; save new state back to (kbd_state)
   ld (hl), c
